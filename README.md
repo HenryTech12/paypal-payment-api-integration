@@ -15,7 +15,7 @@ A simple and efficient PayPal payment processing API built with Spring Boot.
 - **Backend:** Java, Spring Boot
 - **Frontend:** HTML, CSS, JavaScript
 - **Payment Gateway:** PayPal API
-- **Build Tool:** Maven
+- **Build Tool:** Maven, Intelli J
 
 ## Installation
 
@@ -52,7 +52,3 @@ This API integrates with PayPal for secure payment processing. Make sure to conf
 ## Frontend
 
 The frontend templates are located in `src/main/resources/templates/frontend`.
-
-## License
-
-MIT License. See `LICENSE` for details.
