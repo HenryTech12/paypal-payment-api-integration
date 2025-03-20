@@ -69,7 +69,6 @@ This project includes centralized exception handling using `@ControllerAdvice`:
 ## Frontend
 
 The frontend templates are located in `src/main/resources/templates/frontend`.
-=======
 The frontend templates are located in `src/main/resources/templates/frontend/`.
 
 ## Logging
