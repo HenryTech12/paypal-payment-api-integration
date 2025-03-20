@@ -28,10 +28,10 @@ public class PaymentService
 		 Amount amount = new Amount();
 		
 		DecimalFormat df = new DecimalFormat("0.00", DecimalFormatSymbols.getInstance(Locale.US));
-      df.setGroupingUsed(false);  // Ensure no thousand separators
+                df.setGroupingUsed(false);  // Ensure no thousand separators
 
-      amount.setTotal(df.format(paymentDto.getTotal()));  // Ensures "45.00"
-      amount.setCurrency(paymentDto.getCurrency());
+                amount.setTotal(df.format(paymentDto.getTotal()));  // Ensures "45.00"
+                amount.setCurrency(paymentDto.getCurrency());
 		
 		Transaction transaction = new Transaction();
 		transaction.setAmount(amount);
