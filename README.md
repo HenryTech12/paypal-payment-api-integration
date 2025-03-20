@@ -68,7 +68,6 @@ This project includes centralized exception handling using `@ControllerAdvice`:
 
 ## Frontend
 
-<<<<<<< HEAD
 The frontend templates are located in `src/main/resources/templates/frontend`.
 =======
 The frontend templates are located in `src/main/resources/templates/frontend/`.
@@ -79,5 +78,3 @@ The application includes detailed logging:
 - `org.springframework.web` (DEBUG)
 - `org.apache.coyote.http11` (DEBUG)
 - `org.apache.tomcat.util.threads` (DEBUG)
-
->>>>>>> 784cc8a (backend changes)
