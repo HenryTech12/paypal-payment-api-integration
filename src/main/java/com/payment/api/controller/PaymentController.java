@@ -42,9 +42,9 @@ public class PaymentController {
     }
 
      @GetMapping("/payment/create")
-     public RedirectView createPayment(HttpSession session, @ModelAttribute PaymentDTO paymentDTO) {
-           String cancelUrl = "http://localhost:8080/payment/error";
-           String successUrl = "http://localhost:8080/payment/execute";
+     public RedirectView createPayment(HttpServletRequest req, HttpSession session, @ModelAttribute PaymentDTO paymentDTO) {
+           String cancelUrl = getApplicationUrl(req)+"/payment/error";
+           String successUrl = getApplicationUrl(req)+"/payment/execute";
            String intent = "sale";
 
             System.out.println("Method: "+paymentDTO.getMethod());
@@ -90,6 +90,16 @@ public class PaymentController {
          return "failure";
     }
 
+    public String getApplicationUrl(HttpServletRequest request) {
+
+        String scheme = request.getScheme(); // http or https
+        String serverName = request.getServerName(); // localhost or domain
+        int serverPort = request.getServerPort(); // 8080
+        String contextPath = request.getContextPath(); // /app-name (if any)
+
+        return scheme + "://" + serverName + ":" + serverPort + contextPath;
+    }
+   
    @GetMapping("/payment/success")
    public String paymentSuccess() {
         return "success";

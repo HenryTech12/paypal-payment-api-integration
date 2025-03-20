@@ -87,9 +87,10 @@ public class PaymentService
    public ReceiptDTO extractReceipt(PaymentDTO paymentDTO) {
              if(!Objects.isNull(paymentDTO)) {
                   LocalDate date = LocalDate.now(); //transaction date
-                  LocalTime time = LocalTime.now(); //transaction time
                   ReceiptDTO receipt = receiptMapper.convert_paymentdetails_to_receipt(paymentDTO);
                   receipt.setDate(date);
+                  ZonedDateTime systemTime = ZonedDateTime.now();
+                  LocalTime time = LocalTime.now(systemTime.getZone()); //transaction time
                   receipt.setTime(time);
             
            String currencyCode = paymentDTO.getCurrency();
