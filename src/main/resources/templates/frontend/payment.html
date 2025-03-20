@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html
+     xmlns:th="http://www.thymeleaf.org"
+>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" th:href="@{/css/payment.css}" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+  
+    <main class="container">
+      <form id="form" th:action="@{/payment/create}" th:object="${paymentDTO}">
+        <div class="header">
+           <h3>Ensure to fill below details carefully.</h3>
+        </div>
+        <div class="content">
+           <input type="text" placeholder="Email" th:field="*{email}">
+           <input type="text" placeholder="Enter Amount" th:field="*{total}">
+           
+           <section>
+             
+             <select th:field="*{currency}">
+               <optgroup id="currency"> 
+                       <option selected th:value="currency">Enter Your Currency</option>
+                       <option th:value="USD">USD - United States Dollar</option>
+                       <option th:value="EUR">EUR - Euro</option>
+                       <option th:value="GBP">GBP - British Pound</option>
+                       <option th:value="CAD">CAD - Canadian Dollar</option>
+                       <option th:value="AUD">AUD - Australian Dollar</option>
+                       <option th:value="JPY">JPY - Japanese Yen</option>
+                       <option th:value="SGD">SGD - Singapore Dollar</option>
+                       <option th:value="HKD">HKD - Hong Kong Dollar</option>
+                       <option th:value="CHF">CHF - Swiss Franc</option>
+                       <option th:value="SEK">SEK - Swedish Krona</option>
+                       <option th:value="NZD">NZD - New Zealand Dollar</option>
+               </optgroup>
+             </select>
+             
+             <select th:field="*{method}">
+                 <optgroup >
+                    <option selected th:value="method">Payment Method</option>
+                     <option th:value="Paypal">Paypal</option>
+               </optgroup>
+             </select>
+             
+           </section>
+           
+           <textarea placeholder="Payment Description" th:field="*{desc}"></textarea>
+           
+           <button type="submit" class="mySubmit">
+             <span>Pay Now</span>
+             <span class="material-symbols-outlined ic">arrow_right_alt</span>
+           </button>
+           
+        </div>
+      </form>
+      <script th:src="@{/js/payment.js}"></script>
+    </main>
+</body>
+
+</html>

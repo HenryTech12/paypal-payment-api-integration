@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"
+   xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HTML</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Jersey+15&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+    .* , *::before , *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container {
+      max-width: 300px;
+      min-height: 250px;
+      height: auto;
+      border: 1px solid black;
+      margin: 10rem auto;
+      padding: 1rem;
+    }
+    div > span {
+      font-weight: bolder;
+      font-size: 1.4rem;
+      text-align: center;
+      display: block;
+      font-family: 'Exo 2';
+      margin:  .5rem 0;
+    }
+    div section {
+      color: red;
+      text-align: center;
+      font-style: italic;
+      font-family: 'Titillium Web';
+    }
+    button {
+      display: block;
+      margin: .8rem auto;
+      height: auto;
+      background: #2364E4;
+      width: 150px;
+      font-weight: bolder;
+      font-size: 1.5rem;
+      color: white;
+      border: none;
+      font-family: 'Kanit';
+      outline: none;
+      border-radius: 15px;
+      box-shadow: 0px 0px 3px 0px darkgray;
+      backdrop-filter: blur(5rem);
+    }
+    .icon > span{
+      font-size: 4rem;
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+      color: red;
+    }
+  </style>
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+</head>
+
+<body>
+  <!-- Project -->
+  <main class="container">
+      <form th:action="@{/payment/add}" th:method="post">
+        <section class="icon">
+           <span class="material-icons ic">credit_card</span>
+        </section>
+        <div>
+          <span>
+             By clicking the button below you can access the PayPal payment website details.
+          </span>
+          <section>
+            Integrating secure payments via PayPal.
+          </section>
+        </div>
+        <button>
+          <span>Pay via Paypal</span>
+        </button>
+      </form>
+  </main>
+  <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

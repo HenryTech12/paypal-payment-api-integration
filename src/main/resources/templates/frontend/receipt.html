@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://www.thymeleaf.org"
+>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" th:href="@{/css/receipt.css}" type="text/css" media="all" />
+</head>
+
+<body>
+    <main class="container" th:object="${receipt}" method="post">
+       <form>
+         <div class="header">
+            <h2>Thanks for using our service.</h2>
+         </div>
+         
+         <div class="info">
+           <h2>User Details</h2>
+          <div>
+           <section>
+             <span>Email</span>
+             <span th:text="*{email}"></span>
+           </section>
+           <section>
+             <span>Date Of Transaction</span>
+             <span th:text="*{date}"></span>
+           </section>
+           
+           <section>
+             <span>Time Of Transaction</span>
+             <span th:text="*{time}"></span>
+           </section>
+          </div>
+         </div>
+         
+         <div class="payment">
+            <h2>Payment Details</h2> 
+            <div>
+              <section class="u">
+                <span>Payment Method</span>
+                <span th:text="*{method}"></span>
+              </section>
+              
+              <section class="desc">
+                <span>Description</span>
+                <span th:text="*{desc}"></span>
+              </section>
+              
+              <section class="u">
+                <span>Currency</span>
+                <span th:text="*{currency}"></span>
+              </section>
+              
+              <section class="u">
+                <span>Amount</span>
+                <span th:text="*{total}"></span>
+              </section>
+            </div>
+         </div>
+         <a onclick="downloadPDF()">Generate Receipt</a>
+       </form>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+       <script>
+async function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+
+    const element = document.body; // Change this to a specific div if needed
+    const canvas = await html2canvas(element, { scale: 2 }); // Increase scale for better quality
+    const imgData = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF("p", "mm", "a4");
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+
+    const imgWidth = canvas.width / 2; // Scale factor
+    const imgHeight = canvas.height / 2;
+
+    let heightLeft = imgHeight;
+    let position = 0;
+
+    pdf.addImage(imgData, "PNG", 0, position, pdfWidth, (imgHeight * pdfWidth) / imgWidth);
+    heightLeft -= pdfHeight;
+
+    while (heightLeft > 0) {
+        position -= pdfHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, "PNG", 0, position, pdfWidth, (imgHeight * pdfWidth) / imgWidth);
+        heightLeft -= pdfHeight;
+    }
+
+    pdf.save("download.pdf");
+}
+</script>
+    </main>
+</body>
+
+</html>
